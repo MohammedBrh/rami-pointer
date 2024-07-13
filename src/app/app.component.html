@@ -1,0 +1,50 @@
+<div class="reset">
+  <button (click)="resetAll()"> Reset All</button>
+  <button (click)="reset()"> Reset</button>
+  <button (click)="ShowBlocAddPlayer()"> Add PLayer</button>
+</div> 
+<div class="main">
+  <div *ngIf="!addPLayer && !isTheGameEnd">
+    <tr>
+      <td *ngFor="let player of players">
+        <!-- {{player.name}} -->
+        <button class="btn" (click)="endGame(player.name)">{{player.name}}</button>
+      </td>
+    </tr>
+    <!-- <tr>
+      <td *ngFor="let player of players">
+        <button class="btn" (click)="endGame(player.name)">End Game</button>
+      </td>
+    </tr> -->
+    <tr>
+      <td *ngFor="let player of players">
+        {{player.note}}
+      </td>
+    </tr>
+    
+    ----------------------------------------------------
+    <tr *ngFor="let HH of His">
+      <td>{{HH.name}}</td>
+      <td *ngFor="let note of HH.historyNote">{{(note >= 0) ? note : 'win'}}</td>
+    </tr>
+  </div>
+  <div *ngIf="!addPLayer && isTheGameEnd">
+    
+    <table>
+      <tr *ngFor="let player of players; let i = index">
+        <td>
+          {{player.name}}
+          <input [disabled]="player.name == this.winner" [(ngModel)]="player.noteLose" />
+        </td>
+      </tr>
+    </table>
+    <button (click)="getValues()">Add points</button>
+  </div>
+<div class="add-player" *ngIf="addPLayer">
+  <div class="main">
+    <input [(ngModel)]="newPlayer" />
+  <button (click)="addPlayer()"> Add</button>
+  </div>
+</div>
+</div>
+

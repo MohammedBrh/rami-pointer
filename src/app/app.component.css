@@ -1,0 +1,29 @@
+.reset {
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
+}
+button {
+  margin: 2px;
+  padding: 5px;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid darkgray;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+}
+tr {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+}
+tr > td {
+  height: 20px;
+  width: 100%;
+  padding: 3px;
+}
+* {
+  text-align: center;
+}
