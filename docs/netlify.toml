@@ -1,0 +1,9 @@
+[build]
+  command = "npm install -g @angular/cli && ng build"
+  publish = "dist/sandbox"
+
+[build.environment]
+  NODE_VERSION = "16"
+
+[[plugins]]
+  package = "@netlify/plugin-angular"
