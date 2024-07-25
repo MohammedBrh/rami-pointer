@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {MatTableModule} from '@angular/material/table';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +14,7 @@ export class AppComponent {
   players: any[] = [];
   His: any[] = [];
 
+  displayedColumns: string[] = ['name', 'note'];
   endGame(name: string) {
     this.isTheGameEnd = true;
     this.winner = name;
@@ -21,7 +22,7 @@ export class AppComponent {
 
   getValues() {
     let err =
-      this.players.filter((player) => isNaN(player!.noteLose)).length > 0;
+      this.players.filter((player) => (isNaN(player!.noteLose) || player!.noteLose < -1)).length > 0;
     if (err) {
       this.players.map((player: any) => (player!.noteLose = '0'));
       this.isTheGameEnd = false;
