@@ -25,7 +25,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/historique/historique.component.css",
+              "src/app/ordredPlayers/ordred-player.component.css",
+              "src/app/app.component.css"
             ],
             "scripts": []
           },
@@ -87,7 +90,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/historique/historique.component.css",
+              "src/app/ordredPlayers/ordred-player.component.css",
+              "src/app/app.component.css"
             ],
             "scripts": []
           }

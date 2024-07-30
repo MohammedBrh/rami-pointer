@@ -1,5 +1,5 @@
 {
-  "name": "sandbox",
+  "name": "ramiPointer",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,13 +8,14 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "install":"npm i --legacy-peer-deps"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
     "@angular/cdk": "^18.1.2",
-    "@angular/common": "^17.3.0",
+    "@angular/common": "^17.3.12",
     "@angular/compiler": "^17.3.0",
     "@angular/core": "^17.3.0",
     "@angular/forms": "^17.3.0",

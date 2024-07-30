@@ -1,6 +1,6 @@
 [build]
   command = "ng build --prod"
-  publish = "sandbox"
+  publish = "sandbox"  # The directory where your build output is located
 
 [build.environment]
   NODE_VERSION = "20"

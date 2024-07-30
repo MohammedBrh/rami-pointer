@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,9 +13,10 @@ export class AppComponent {
   isTheGameEnd: boolean = false;
   addPLayer = false;
   players: any[] = [];
+  ordresPlayers: any[] = [];
   His: any[] = [];
+  HisMapped: any[] = [];
 
-  displayedColumns: string[] = ['name', 'note'];
   endGame(name: string) {
     this.isTheGameEnd = true;
     this.winner = name;
@@ -22,7 +24,7 @@ export class AppComponent {
 
   getValues() {
     let err =
-      this.players.filter((player) => (isNaN(player!.noteLose) || player!.noteLose < -1)).length > 0;
+      this.players.filter((player) => isNaN(player!.noteLose)).length > 0;
     if (err) {
       this.players.map((player: any) => (player!.noteLose = '0'));
       this.isTheGameEnd = false;
@@ -42,6 +44,9 @@ export class AppComponent {
       player!.noteLose = '0';
     });
     this.isTheGameEnd = false; // Optional: Log the updated players array to verify changes
+    this.HisMapped = this.transformData(this.His);
+    this.ordresPlayers = this.orderPlayers(this.players);
+    
   }
   reset() {
     this.winner = '';
@@ -65,5 +70,34 @@ export class AppComponent {
   }
   ShowBlocAddPlayer() {
     this.addPLayer = true;
+  }
+
+  transformData (data: any[]) {
+    if (data.length === 0) return [];
+    debugger;
+  
+    // Create the first row with names
+    const headerRow: (string | number)[] = ['Name', ...data.map(person => person.name)];
+  
+    // Find the maximum length of historyNote arrays
+    const maxRounds = Math.max(...data.map(person => person.historyNote.length));
+  
+    // Initialize the result with the header row
+    const result: (string | number)[][] = [headerRow];
+  
+    // Fill in each round data
+    for (let round = 0; round < maxRounds; round++) {
+      const row: (string | number)[] = [`Round ${round + 1}`];
+      for (const person of data) {
+        const note = person.historyNote[round];
+        row.push(note !== undefined ? note : '-'); // Use '-' as placeholder for missing values
+      }
+      result.push(row);
+    }
+  
+    return result;
+  };
+  orderPlayers(players: any[]){
+    return players.sort((a, b) => b.note - a.note);
   }
 }
